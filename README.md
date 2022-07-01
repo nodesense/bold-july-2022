@@ -1,3 +1,17 @@
+# get started 
+
+```
+git clone https://github.com/nodesense/bold-july-2022
+
+cd bold-july-2022
+
+npm install
+
+npm start
+
+then open browser http://localhost:3000
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
