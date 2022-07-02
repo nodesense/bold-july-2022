@@ -3,6 +3,7 @@ import React from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Counter from './components/Counter';
+import Cart from './components/Cart';
 
 // class component
 class App extends React.Component {
@@ -31,6 +32,8 @@ class App extends React.Component {
 
                     {/* title is an attribute for object props */}
                 <Header title="Shopping Cart" />
+
+                <Cart />
 
                 <Counter startValue={100} />
 

@@ -58,7 +58,7 @@ class Counter extends Component {
     // decr is callback method, attached to button click
     decr = () => {
         console.log("decr before ", this.state)
-        // having functional setState in code, we will ensure that render is called once not twice
+        // having functional setState in code, we will ensure that render is called once not
         // set state pattern 2, functional setState
         // pass a callback function to setState, which will be called at the time of merge state, not immediately
         // functional setState callback accept 2 parameters, first param is prevState, next param is props

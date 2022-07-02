@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'; // real dom, event handling, patch virtual dom
 // 
 import App from './app/App';
 
+import "./index.css"; // using web pack plugin, css is imported and extracted
+
 // index.html <div id="root".... place holder for react app
 
 const root = document.getElementById("root"); // REAL DOM

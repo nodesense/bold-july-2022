@@ -50,23 +50,48 @@ class Cart extends Component {
             name: `Product ${id}`,
             price: Math.ceil(Math.random() * 100),
             qty: 1
-        }
+        } 
 
-        //TODO:
- 
+        // immutablity
+        this.setState({
+            items: [...this.state.items, item]
+        })
     }
     
+    // Child to parent communication happens via callback
+    // parent component shall pass its function to child component as props
+    // child component shall call the parent component function
+    // we will update pass removeItem, updateItem functiosn to CartList component as props
+    // CartList shall passs removeItem, updateItem functions to each CartItem component as props
+    // CartItem component shall call updateItem, removeItem on button clicks
     removeItem = (id) => {
         //TODO
+        console.log("removeItem called", id)
+
+        // immutable way of removing items in array using filter method, 
+        // this create a new array from filter, including all items except the one we remove
+        this.setState({
+            items: this.state.items.filter (item => item.id !== id) 
+        })
     }
 
     updateItem = (id, qty) => {
         //TODO
+        console.log("updateItem called", id, qty)
+        // TWO parts immutablility to be taken care, since we modify an OBJECT located inside an  ARRAY
+        // 1. Array must be immutable
+        // 2. Object in the array must be immutable
+        // map returns new array, {...item} returns new object
+        const items = this.state.items.map (item => item.id === id? {...item, qty}: item)
+        this.setState({
+            items // ES6, items: items
+        })
     }
 
     empty = () => {
-        //TODO
-         
+        this.setState({
+            items: [] 
+        }) 
     }
 
     //dummy
@@ -104,6 +129,7 @@ class Cart extends Component {
 
             <CartList  items={this.state.items}  
                        removeItem={this.removeItem}
+                       updateItem = {this.updateItem}
             />
 
             <CartSummary amount={this.state.amount}
