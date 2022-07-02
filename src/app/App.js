@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Counter from './components/Counter';
 import Cart from './components/Cart';
+import FuncCounter from './components/FuncCounter';
+
 
 // class component
 class App extends React.Component {
@@ -32,6 +34,8 @@ class App extends React.Component {
 
                     {/* title is an attribute for object props */}
                 <Header title="Shopping Cart" />
+
+                <FuncCounter />
 
                 <Cart />
 
