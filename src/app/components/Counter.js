@@ -35,13 +35,22 @@ class Counter extends Component {
     incr = (event) => {
         console.log("event is ", event)
         console.log("before ", this.state)
-        // how to mutatte data in state
+        // how to mutate data in state
         // setState is async function, the values are set immediately
         // setState goes through batch update, few/many setState are merged with in event and finally 
         // values are meged and set to this.state
         // after updating tis.state, react shall trigger render function to display latest values
         // pattern 1, pass object to setState with any attribute which will be set on next render cycle
-        this.setState({ counter: this.state.counter + 1})
+        // setState has callback function as second argument
+        // setState callback is called after merging the states, after updating this.state and after calling render
+        // first arg is new state object, second arg is function callback
+        this.setState({ counter: this.state.counter + 1}, () => {
+            // good place to implement side effect, after changing a   state, compute or act on changes
+            console.log("incr setState callback ", this.state) // updated state
+            // again, compute new result based on previous result, setState will call render again
+            this.setState({counter: this.state.counter + 1})// trigger another render function
+        })
+
         console.log("after ", this.state)
     }
 
@@ -56,7 +65,18 @@ class Counter extends Component {
         // first time, prevState would be this.state value, 
         // when we have more callbacks, prevState is merged output from previous callbacks
         this.setState( (prevState, props) => {
-            console.log("functional setState called ", prevState, props)
+            console.log("functional setState called first prevState ", prevState, props)
+            // return a new state with any attribute that will be merged with this.state finally before render call
+            // returned value with state is passed to next setState callback as input
+            return {
+                counter: prevState.counter - 1
+            }
+        })
+
+        // previously compueted state counter value shall be passed here as prevState
+        // render shall be called only once here, not twice
+        this.setState( (prevState, props) => {
+            console.log("functional setState called second prevState ", prevState, props)
             // return a new state with any attribute that will be merged with this.state finally before render call
             return {
                 counter: prevState.counter - 1
@@ -68,8 +88,8 @@ class Counter extends Component {
 
     // called by react and create and  return v.dom
     render() {
-        console.log("Counter render props", this.props)
-        console.log("Coutner render state ", this.state)
+       // console.log("Counter render props", this.props)
+        console.log("Counter render state ", this.state)
 
         return (
             <div>
