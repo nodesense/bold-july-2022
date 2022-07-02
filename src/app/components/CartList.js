@@ -11,7 +11,7 @@ import CartItem from "./CartItem";
  //   and return true or false based on compare result
  // purecomponent render only if any diff in props or state found
 // pure compare both funcs and values or object passed to props
-
+// pure component does shallow comparation ~ Big O(1), check two references 
  class CartList extends PureComponent {
     constructor(props) {
         super(props);

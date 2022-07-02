@@ -43,7 +43,7 @@ class Cart extends Component {
         super(props);
 
         const items = []
-        for (let i = 0; i < 10000; i++){
+        for (let i = 0; i < 10; i++){
             let id =  this.getNextId()
             let item = {
                 id,
