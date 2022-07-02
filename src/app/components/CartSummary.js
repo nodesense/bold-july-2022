@@ -15,10 +15,10 @@ function  recalculate(props, state) {
 
     let grandTotal = props.amount - (props.amount * discount / 100);
 
-    this.setState({
+    return  {
         discount, 
         grandTotal
-    })
+    }
 }
 
 // TODO: PureComponent
