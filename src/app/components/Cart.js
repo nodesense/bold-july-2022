@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import CartList from "./CartList";
 import CartSummary from "./CartSummary";
+ 
 
 // derived data from state 
 function  recalculate(props, state) {
@@ -23,6 +24,14 @@ function  recalculate(props, state) {
 }
 
 class Cart extends Component {
+
+     // class instance variable, not state 
+    nextId = 2
+     
+    getNextId() {
+        return this.nextId++
+    }
+
     static defaultProps = {
     
     }
@@ -33,18 +42,47 @@ class Cart extends Component {
     constructor(props) {
         super(props);
 
+        const items = []
+        for (let i = 0; i < 10000; i++){
+            let id =  this.getNextId()
+            let item = {
+                id,
+                name: `Product ${id}`,
+                price: Math.ceil(Math.random() * 100),
+                qty: 1
+            } 
+            items.push(item)
+        }
+
         this.state = {
             items: [ 
-            			{id: 1, name: 'P1', price: 100, qty: 1}
+            			{id: 1, name: 'P1', price: 100, qty: 1},
+                        ...items,
             	   ],
             amount: 0, // sum of all items price * qty
             count: 0, // sum of all items qty
             flag: true
         }
     }
+
+    // compute derived state either from props or state of the component
+    // reactive to the changes, any changes in the state must ensure to calculate new derived state
+    // It must work on component mounting/creation state, or component update lifecyle
+    // getDerivedStateFromProps function called before render function during creation cycle
+    // getDerivedStateFromProps function called before render  function during update cycle
+    static getDerivedStateFromProps(props, state) {
+        console.log("CART getDerivedStateFromProps")
+        const {amount, count} = recalculate(props, state)
+        // return a new state object with amount and count properties
+        //returned state shall be merged with this.state before calling render
+        return {amount, count};
+
+        // return recalculate(props,state)
+
+    }
     
     addItem = () => {
-        let id = Math.ceil(Math.random() * 10000);
+        let id = this.getNextId();
         let item = {
             id,
             name: `Product ${id}`,

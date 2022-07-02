@@ -1,11 +1,14 @@
 // CartItem.js
-import React, {Component} from "react";
+import React, {Component, PureComponent} from "react";
 import PropTypes from "prop-types";
 
-class CartItem extends Component {
+class CartItem extends PureComponent {
+   
+
     constructor(props) {
         super(props);
     }
+
 
     //TODO: Ref
     //TODO: componentWillMount
