@@ -11,7 +11,8 @@ import ProductList from './components/ProductList';
 import ThemeContext from './contexts/ThemeContext';
 import LangContext, { English, Hindi, Tamil } from './contexts/LangContext';
 import LangRoute from './components/LangRoute';
-
+import Checkout from './components/Checkout';
+ 
 
 // class component
 class App extends React.Component {
@@ -85,6 +86,10 @@ class App extends React.Component {
                     
                     <Route path="/brands">
                         <h2>Brands</h2>
+                    </Route>
+
+                    <Route path="/checkout">
+                        <Checkout />
                     </Route>
                     
                     <Route path="/redux-cart">

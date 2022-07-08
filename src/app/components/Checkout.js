@@ -3,7 +3,7 @@
 // working with ref
 import React, {createRef} from 'react';
 
-//Ref - Reference, a reference to DOM Object, a wrapper object 
+//Ref - Reference, a reference to Real DOM Object, a wrapper object 
 // Ref shall be accessible from componentDidMount onwards
 // Ref is useful to work dom, input element, select element text or focus text
 // Work with chart control with direct dom/canvas,svg etc
@@ -21,15 +21,23 @@ class Checkout extends React.Component {
             city: ''
         }
 
-        
+        this.nameRef = createRef()
     }
 
     handleChange = (e) => {
-         
+         // take data from real dom changes
+         // then update the state
+         // from state, virtual dom shall be updated
+         // <input name="name" value=../>, target is real dom input/select box
+         const {name, value} = e.target;
+         console.log('change ', name, value)
+         // update state
+         this.setState({ [name]: value})
     }
 
     componentDidMount() {
-         
+         this.nameRef.current.focus(); 
+         this.nameRef.current.select();
     }
 
     render() {
@@ -40,7 +48,7 @@ class Checkout extends React.Component {
                 <form>
                     Name <input name="name" type="text" value={this.state.name}
                             onChange={this.handleChange}
-                            
+                            ref = {this.nameRef}
                      />
                     City <select name="city" value={this.state.city}   onChange={this.handleChange}>
                         <option value="CH">Chennai</option>
