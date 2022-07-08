@@ -9,13 +9,37 @@ import FuncCounter from './components/FuncCounter';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ThemeContext from './contexts/ThemeContext';
- 
+import LangContext, { English, Hindi, Tamil } from './contexts/LangContext';
+import LangRoute from './components/LangRoute';
+
 
 // class component
 class App extends React.Component {
     constructor(props) {
         super(props) // super refer base class cons
         console.log("App comp created")
+
+        this.state = {
+            lang: English
+        }
+    }
+ 
+    changeEnglish = () => {
+        this.setState({
+            lang: English
+        })
+    }
+
+    changeHindi = () => {
+        this.setState({
+            lang: Hindi
+        })
+    }
+
+    changeTamil = () => {
+        this.setState({
+            lang: Tamil
+        })
     }
 
     // class property, App.defaultProps
@@ -32,8 +56,12 @@ class App extends React.Component {
 
         return (
             <div>
+                 <LangContext.Provider value = {this.state.lang} >
                 <ThemeContext.Provider value="lightgreen">
-                <h2>Product App</h2>
+                 <button onClick={this.changeEnglish}>English</button>
+                 <button onClick={this.changeHindi}>हिन्दी</button>
+                 <button onClick={this.changeTamil}>தமிழ்</button>
+
                 {/* component composition , App is parent component, Header,
                     Footer are children components */}
 
@@ -67,6 +95,10 @@ class App extends React.Component {
                         <FuncCounter />
                     </Route>
 
+                    <Route path="/mylanguage/:lang" component={LangRoute}>
+                      
+                    </Route>
+
                     <Route path="/counter">
                     <Counter startValue={100} />
                     </Route>
@@ -85,6 +117,7 @@ class App extends React.Component {
                     <p>Sat/Sun holiday</p>
                 </Footer>
             </ThemeContext.Provider>
+            </LangContext.Provider>
             </div>
         )
     }
