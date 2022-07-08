@@ -1,7 +1,8 @@
 // Footer.js
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ThemeContext from '../contexts/ThemeContext';
+ 
 // ES6 style 
 // props is object {}
 const Footer = (props) => {
@@ -14,6 +15,13 @@ const Footer = (props) => {
             <hr />
             <p>Copyrights@{year}, {title}, by {company} </p>
             {children} {/* from parent content children */}
+
+            {/* value is either default or provided by provider..
+                if no provier, value shall be taken from default
+            */}
+            <ThemeContext.Consumer>
+                { value => (<span >Theme is {value} </span>)}
+            </ThemeContext.Consumer>
         </div>
     )
 }

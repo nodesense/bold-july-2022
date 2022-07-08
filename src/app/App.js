@@ -7,7 +7,9 @@ import Cart from './components/Cart';
 import FuncCounter from './components/FuncCounter';
 
 import {Route, Switch, Redirect} from 'react-router-dom';
-
+import ProductList from './components/ProductList';
+import ThemeContext from './contexts/ThemeContext';
+ 
 
 // class component
 class App extends React.Component {
@@ -30,6 +32,7 @@ class App extends React.Component {
 
         return (
             <div>
+                <ThemeContext.Provider value="lightgreen">
                 <h2>Product App</h2>
                 {/* component composition , App is parent component, Header,
                     Footer are children components */}
@@ -49,7 +52,7 @@ class App extends React.Component {
                     </Route>
                     
                     <Route path="/products">
-                        <h2>Products</h2>
+                         <ProductList />
                     </Route>
                     
                     <Route path="/brands">
@@ -73,7 +76,7 @@ class App extends React.Component {
                     </Route>
 
                 </Switch>
- 
+                {/* not footer context consumer will get provider value */}
                 <Footer title={title} company="Bold" year={"2020 + 2"}>
                     {/*  {} represent expression, jsx comment */}
                     {/* this area is known as content children 
@@ -81,6 +84,7 @@ class App extends React.Component {
                     */}
                     <p>Sat/Sun holiday</p>
                 </Footer>
+            </ThemeContext.Provider>
             </div>
         )
     }
