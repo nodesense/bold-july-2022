@@ -6,6 +6,8 @@ import Counter from './components/Counter';
 import Cart from './components/Cart';
 import FuncCounter from './components/FuncCounter';
 
+import {Route, Switch, Redirect} from 'react-router-dom';
+
 
 // class component
 class App extends React.Component {
@@ -35,12 +37,43 @@ class App extends React.Component {
                     {/* title is an attribute for object props */}
                 <Header title="Shopping Cart" />
 
-                <FuncCounter />
+                {/* switch pick first match */}
+                <Switch>
 
-                <Cart />
+                    <Route path="/" exact>
+                        <h2>Home page</h2>    
+                    </Route>        
 
-                <Counter startValue={100} />
+                    <Route path="/cart">
+                        <Cart />
+                    </Route>
+                    
+                    <Route path="/products">
+                        <h2>Products</h2>
+                    </Route>
+                    
+                    <Route path="/brands">
+                        <h2>Brands</h2>
+                    </Route>
+                    
+                    <Route path="/redux-cart">
+                        <h2>Reduxt Cart</h2>
+                    </Route>
 
+                    <Route path="/func-counter">
+                        <FuncCounter />
+                    </Route>
+
+                    <Route path="/counter">
+                    <Counter startValue={100} />
+                    </Route>
+
+                    <Route path="*">
+                        <h2>Page not found</h2>
+                    </Route>
+
+                </Switch>
+ 
                 <Footer title={title} company="Bold" year={"2020 + 2"}>
                     {/*  {} represent expression, jsx comment */}
                     {/* this area is known as content children 

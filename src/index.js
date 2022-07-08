@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom'; // real dom, event handling, patch virtual dom
 // no curly brace for default import
 // 
 import App from './app/App';
+import {BrowserRouter as Router}  from 'react-router-dom';
+
 
 import "./index.css"; // using web pack plugin, css is imported and extracted
 
@@ -23,4 +25,8 @@ const vdom1 = React.createElement ("h1",
 const vdom2 = <h1 id="myhead" className='head'>Welcome to React</h1>
 
 // mount virtual dom into real dom
-ReactDOM.render(<App />, root) // 0r use vdom2
+ReactDOM.render(
+        <Router>
+            <App />
+        </Router>
+, root) // 0r use vdom2
