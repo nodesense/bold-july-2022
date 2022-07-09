@@ -1,5 +1,5 @@
 // app/App.js
-import React from 'react';
+import React, {Suspense} from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Counter from './components/Counter';
@@ -13,9 +13,13 @@ import LangContext, { English, Hindi, Tamil } from './contexts/LangContext';
 import LangRoute from './components/LangRoute';
 import Checkout from './components/Checkout';
 // note, import from container not from components
-import ReduxCart from './redux-cart/containers/ReduxCart';
+
+// lazy load ReduxCart
+// import ReduxCart from './redux-cart/containers/ReduxCart';
 import ReduxProductList from './redux-cart/containers/ReduxProductList';
  
+const ReduxCart = React.lazy(() => import('./redux-cart/containers/ReduxCart'));
+
 
 // class component
 class App extends React.Component {
@@ -96,7 +100,9 @@ class App extends React.Component {
                     </Route>
                     
                     <Route path="/redux-cart">
-                       <ReduxCart />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <ReduxCart />
+                        </Suspense>
                     </Route>
                     
                     <Route path="/redux-products">
