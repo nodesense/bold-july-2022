@@ -2,8 +2,12 @@
 import axios from 'axios';
 import React, { Component, useState, useEffect } from 'react';
 // npm install axios 
-const API = 'http://localhost:7070/delayed/api/products'
 
+// const API = 'http://localhost:7070/delayed/api/products'
+// resolved at build time, npm start, npm build
+const API = `${process.env.REACT_APP_API_END_POINT}/delayed/api/products`
+
+console.log("API IS ", API)
 // useEffect is useful in accessing DOM elements
 // useEffect useful for componentDidMount like implementation lifecycle
 // useEffect useful for componentDidUpdate like implementation lifecycle

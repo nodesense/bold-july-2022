@@ -21,6 +21,17 @@ npm i redux react-redux redux-thunk
 
 ```
 
+# environment files
+
+React support .env environment, which can be extended for testing, production, etc
+
+All REACT App properties MUST be PREFIXed with REACT_APP_ to use inside 
+source code like API_END_POINT SHOULD BE REACT_APP_API_END_POINT
+
+in the .env file
+
+.env file is resolved at the of time build system, not at the the app is loading into browser, this is not dynamic.. it is static, compile time.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
