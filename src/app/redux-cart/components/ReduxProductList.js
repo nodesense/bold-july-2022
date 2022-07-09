@@ -9,7 +9,7 @@ const ReduxProductList = ({loading, products, getProducts, addToCart}) => {
         // dispatch thunk function, intercepted by thunk middleware
         console.log("Dispatching getproducts thunk function")
         getProducts() 
-    }, []) // componet did mount like
+    }, []) // componet did mount like, called only once after first mount
 
     if (loading) {
         return (<>

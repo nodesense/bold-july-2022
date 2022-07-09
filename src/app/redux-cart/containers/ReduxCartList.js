@@ -1,10 +1,6 @@
 import {connect} from 'react-redux'
 import ReduxCartList from '../components/ReduxCartList'
 
-import * as cartActions from '../state/actions';
-
-import {bindActionCreators} from 'redux';
-
 export const mapStateToProps = (state) => {
     console.log("**ReduxCartList mapStateToProps", state)
     return {
@@ -13,6 +9,8 @@ export const mapStateToProps = (state) => {
 
     }
 }
+
+// nothing to dispatch, mapDispatchToProps set to null
   
 export default  connect(mapStateToProps, null) (ReduxCartList)
  

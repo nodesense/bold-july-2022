@@ -49,7 +49,11 @@ export const mapDispatchToProps = (dispatch, getState) => {
 }
 
 // container component by connection all together
-
+// container susbcribe data from store
+// container takes store from Provider (index.js) via react context
+// container is a pure component, it won't render either functional /class component
+//  without props change
+// if you don't want container to be pure, check document, we have options
 const ReduxCartContainer = connect(mapStateToProps, 
                                    mapDispatchToProps) (ReduxCart);
 

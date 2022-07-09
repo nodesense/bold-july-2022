@@ -7,6 +7,9 @@ import React, {useCallback} from 'react'
 // ReduxCartList shall pass item to conainer reduxcartitem, the the container
 // pass the item to ReduxCartItem component
 const ReduxCartItem = ({item, updateItemInCart, removeItemFromCart}) => {
+    // method inside is created again and again.
+    // using useCallback, it maintain first function ref
+    // this will be useful to pass as props to further child component
     const incrUpdateItem = useCallback(
         () => {
             updateItemInCart(item.id, item.qty + 1);
