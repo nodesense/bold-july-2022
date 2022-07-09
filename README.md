@@ -32,6 +32,20 @@ in the .env file
 
 .env file is resolved at the of time build system, not at the the app is loading into browser, this is not dynamic.. it is static, compile time.
 
+# production build
+
+```
+npm run build
+```
+
+create a  build directory with minimized, code-splited [lazy loading], otuput directory..
+
+# for nested routing, more examples
+
+https://github.com/nodesense/react-app
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
