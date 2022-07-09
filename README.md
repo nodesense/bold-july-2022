@@ -17,6 +17,8 @@ then open browser http://localhost:3000
 npm i react-router-dom@^5
 npm i axios
 
+npm i redux react-redux redux-thunk
+
 ```
 
 # Getting Started with Create React App

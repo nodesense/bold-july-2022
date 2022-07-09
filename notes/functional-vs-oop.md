@@ -49,22 +49,3 @@ function add(sum, value) {
 add(0, 10) // 10
 
 add(0, 10) // 10 predictable
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

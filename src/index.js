@@ -4,6 +4,10 @@ import ReactDOM from 'react-dom'; // real dom, event handling, patch virtual dom
 // . means, current project directory
 // no curly brace for default import
 // 
+
+
+import './redux-demo';
+
 import App from './app/App';
 import {BrowserRouter as Router}  from 'react-router-dom';
 
