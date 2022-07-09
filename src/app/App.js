@@ -14,6 +14,7 @@ import LangRoute from './components/LangRoute';
 import Checkout from './components/Checkout';
 // note, import from container not from components
 import ReduxCart from './redux-cart/containers/ReduxCart';
+import ReduxProductList from './redux-cart/containers/ReduxProductList';
  
 
 // class component
@@ -97,6 +98,11 @@ class App extends React.Component {
                     <Route path="/redux-cart">
                        <ReduxCart />
                     </Route>
+                    
+                    <Route path="/redux-products">
+                       <ReduxProductList />
+                    </Route>
+                    
 
                     <Route path="/func-counter">
                         <FuncCounter />

@@ -1,6 +1,6 @@
 //redux-cart/components/ReduxCart.js
 import React from 'react';
-// import ReduxCartList from '../containers/ReduxCartList'
+import ReduxCartList from '../containers/ReduxCartList'
 // react code, no redux hardcoded here
 // container component shall pass amount, addItem, emptyCart
 // as props, which can work with store
@@ -26,7 +26,7 @@ const ReduxCart = (props) => {
                 Empty Cart
             </button>
             
-            {/* <ReduxCartList /> */}
+            <ReduxCartList />
         </div>
     )
 }
